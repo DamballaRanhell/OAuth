@@ -17,9 +17,6 @@ public class OAuthConstants {
     public static final String PARAM_ACR_VALUES = "acr_values";
     public static final String PARAM_ACCESS_TOKEN = "access_token";
 
-    public static final String URL_USER_INFO = "https://authns.desadsi.gs/nidp/oauth/nam/userinfo";
-    public static final String URL_LOGOUT = "https://authns.desadsi.gs/nidp/jsp/logoutSuccess_latest.jsp?rp=app://ada";
-
     public static final String TOKEN_TYPE = "Bearer";
 
     public static final String ERROR_TAG = "Error: ";
