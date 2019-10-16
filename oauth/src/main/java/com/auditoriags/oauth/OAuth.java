@@ -5,6 +5,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.customtabs.CustomTabsIntent;
 
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLDecoder;
+
 /**
  * Proyecto: OAuth
  * Autor: Emmanuel Rangel Reyes
@@ -14,7 +19,7 @@ import android.support.customtabs.CustomTabsIntent;
  */
 public class OAuth {
 
-    public static void authentication(Activity activity, OAuthParameters oAuthParameters){
+    public static void authentication(Activity activity, OAuthParameters oAuthParameters) throws UnsupportedEncodingException, MalformedURLException {
         Uri uri = Uri.parse(oAuthParameters.getUrl()).buildUpon()
                 .appendQueryParameter(OAuthConstants.PARAM_RESPONSE_TYPE,oAuthParameters.getResponseType())
         .appendQueryParameter(OAuthConstants.PARAM_CLIENT_ID,oAuthParameters.getClientId())
@@ -23,7 +28,8 @@ public class OAuth {
         .appendQueryParameter(OAuthConstants.PARAM_SCOPE,oAuthParameters.getScope())
         .appendQueryParameter(OAuthConstants.PARAM_ACR_VALUES,oAuthParameters.getAcrValues())
                 .build();
-        String urlLlaveMaestra = uri.toString();
+        URL url = new URL(URLDecoder.decode(uri.toString(), "UTF-8"));
+        String urlLlaveMaestra = url.toString();
         openOAuthURL(activity,urlLlaveMaestra);
     }
 
